@@ -1,0 +1,72 @@
+[
+  {
+    "from": "EUR",
+    "to": [
+      {
+        "country": "Turkey",
+        "code": "TR",
+        "exchangeRate": 7.72,
+        "currency": "TRY"
+      },
+      {
+        "country": "Greece",
+        "code": "GR",
+        "exchangeRate": 1,
+        "currency": "EUR"
+      },
+      {
+        "country": "Macedonia",
+        "code": "MK",
+        "exchangeRate": 61.79,
+        "currency": "MKD"
+      },
+      {
+        "country": "Serbia",
+        "code": "RS",
+        "exchangeRate": 117.58,
+        "currency": "RSD"
+      },
+      {
+        "country": "Romania",
+        "code": "RO",
+        "exchangeRate": 4.84,
+        "currency": "RON"
+      }
+    ]
+  },
+  {
+    "from": "USD",
+    "to": [
+      {
+        "country": "Turkey",
+        "code": "TR",
+        "exchangeRate": 6.78,
+        "currency": "TRY"
+      },
+      {
+        "country": "Greece",
+        "code": "GR",
+        "exchangeRate": 0.88,
+        "currency": "EUR"
+      },
+      {
+        "country": "Macedonia",
+        "code": "MK",
+        "exchangeRate": 54.25,
+        "currency": "MKD"
+      },
+      {
+        "country": "Serbia",
+        "code": "RS",
+        "exchangeRate": 103.39,
+        "currency": "RSD"
+      },
+      {
+        "country": "Romania",
+        "code": "RO",
+        "exchangeRate": 4.25,
+        "currency": "RON"
+      }
+    ]
+  }
+]

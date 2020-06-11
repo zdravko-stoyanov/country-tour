@@ -1,23 +1,12 @@
-# Compiled class file
-*.class
+## Ignore auto-generated Intellij files/folders
+.idea
 
-# Log file
-*.log
+## Ignore auto-generated files/folders
+/build/
+/out/
 
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+# Ignore gradle files/folders
+.gradle
+/gradle/
+gradlew
+gradlew.bat

@@ -1,0 +1,82 @@
+buildscript {
+    ext {
+        springBootVersion = '2.2.3.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'jacoco'
+apply plugin: 'java'
+
+sourceCompatibility = 11
+
+group = 'country'
+project.version = 1.0
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation('org.springdoc:springdoc-openapi-ui:1.2.32')
+    implementation('org.springframework.boot:spring-boot-starter')
+    implementation('org.springframework.boot:spring-boot-starter-security')
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation('org.springframework.boot:spring-boot-starter-thymeleaf')
+    implementation('org.thymeleaf.extras:thymeleaf-extras-springsecurity5')
+    implementation('org.springframework.security:spring-security-oauth2-client')
+    implementation('org.springframework.security:spring-security-oauth2-jose')
+    implementation('org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.2.3.RELEASE')
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+def coverage_exclusion = ['**/domain/**', '**/dto/**', '**/configuration/**', '**/Constant**']
+
+jacocoTestReport {
+    group = "Reporting"
+    reports {
+        xml.enabled true
+        csv.enabled false
+        html.destination file("${buildDir}/test-results/coverage")
+    }
+    afterEvaluate {
+        classDirectories.from = files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: coverage_exclusion)
+        })
+    }
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            element = 'CLASS'
+            limit {
+                counter = 'BRANCH'
+                minimum = 0.6
+            }
+        }
+        rule {
+            element = 'CLASS'
+            limit {
+                minimum = 0.6
+            }
+        }
+    }
+    afterEvaluate {
+        classDirectories.from = files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: coverage_exclusion)
+        })
+    }
+}
+
+test.finalizedBy(project.tasks.jacocoTestReport)
+jacocoTestReport.finalizedBy(project.tasks.jacocoTestCoverageVerification)
+

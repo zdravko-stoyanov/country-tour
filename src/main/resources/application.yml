@@ -1,0 +1,22 @@
+#Service configurations
+Server:
+  port: 8080
+
+#Spring security configurations
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 54872941942-40780ifrmbarg9lo9us9hueouc9q1cfp.apps.googleusercontent.com #Usually these configs must be retrieved dynamically
+            client-secret: w_hsKQ3YK9k6fd0G804vLXBL
+
+# swagger-ui custom path
+springdoc:
+  pathsToMatch: /v1/**
+
+logging:
+  level:
+    root: DEBUG
+    com.country.demo.ClientErrorLoggingFilter: DEBUG

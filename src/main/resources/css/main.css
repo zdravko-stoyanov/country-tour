@@ -1,0 +1,9 @@
+p.error {
+    font-weight: bold;
+    color: red;
+}
+
+
+div.logout {
+    margin-right: 2em;;
+}
