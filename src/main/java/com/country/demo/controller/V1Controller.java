@@ -10,19 +10,12 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
-import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
-import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
-import java.util.Map;
 
 import static com.country.demo.util.Validator.validateGetNeighboursTourRequestDto;
 
@@ -30,13 +23,11 @@ import static com.country.demo.util.Validator.validateGetNeighboursTourRequestDt
 @RequestMapping(value = "v1")
 public class V1Controller {
 
-    private TourService tourService;
-    private OAuth2AuthorizedClientService authorizedClientService;
+    private final TourService tourService;
 
     @Autowired
-    public V1Controller(TourService tourService, OAuth2AuthorizedClientService authorizedClientService) {
+    public V1Controller(TourService tourService) {
         this.tourService = tourService;
-        this.authorizedClientService = authorizedClientService;
     }
 
     @ApiResponses({
